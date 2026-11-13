@@ -114,6 +114,150 @@ fieldset{border:0;padding:0;margin:0;min-width:0}.choices{display:flex;flex-wrap
 }
 @media(max-width:430px){.wrap{width:min(100% - 30px,1120px)}.hero-date{font-size:10px;letter-spacing:.12em;gap:9px}.hero-date:before,.hero-date:after{width:24px}.count-grid{gap:5px}.count-unit b{font-size:24px}.count-unit span{font-size:8px}.timeline{grid-template-columns:1fr}.timeline-card{min-height:unset}.gallery{grid-template-columns:1fr}.gallery img{max-height:420px}.swatches{gap:17px}.swatch{width:65px}.swatch i{width:60px;height:60px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fade-up{opacity:1;transform:none;transition:none}*{transition:none!important}}
+
+/* Wedding-site refinements */
+.section.paperwash{
+  background:linear-gradient(145deg,#f7f9fb 0%,#edf3f8 52%,#f8f7f4 100%);
+}
+.section.bluewash .section-head,
+.section.paperwash .section-head{
+  max-width:780px;
+  padding:clamp(20px,3vw,30px) clamp(18px,4vw,34px);
+  background:rgba(255,255,255,.88);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 12px 34px rgba(23,52,84,.08);
+  border-radius:16px;
+}
+.section.bluewash .section-head p,
+.section.paperwash .section-head p{color:#52677b}
+.date-box{min-width:0}
+.calendar-month{
+  color:#987b59;
+  font-family:'Segoe Script','Brush Script MT',cursive;
+  font-size:clamp(30px,4vw,42px);
+  line-height:1.2;
+  margin:3px 0 12px;
+}
+.calendar-grid{
+  width:min(100%,390px);
+  display:grid;
+  grid-template-columns:repeat(7,minmax(0,1fr));
+  gap:clamp(3px,1vw,8px);
+  margin:0 auto 14px;
+}
+.calendar-weekday{
+  color:#a38b70;
+  font:600 10px Arial,sans-serif;
+  letter-spacing:.06em;
+  padding:5px 0 8px;
+}
+.calendar-day{
+  aspect-ratio:1;
+  display:grid;
+  place-items:center;
+  min-width:0;
+  border-radius:50%;
+  color:#5e7184;
+  font-size:clamp(12px,1.6vw,15px);
+  font-weight:600;
+  font-variant-numeric:tabular-nums;
+}
+.calendar-day.selected{
+  color:#173454;
+  border:2px solid #dcae59;
+  box-shadow:0 0 0 2px rgba(220,174,89,.13);
+  background:#fffaf0;
+}
+.timeline{
+  position:relative;
+  display:block;
+  max-width:790px;
+  padding:8px 0 8px;
+}
+.timeline:before{
+  content:"";
+  position:absolute;
+  top:18px;
+  bottom:22px;
+  left:26px;
+  width:2px;
+  background:linear-gradient(to bottom,#d5b477,#9db8d0 55%,#d5b477);
+}
+.timeline-heart{
+  position:absolute;
+  z-index:3;
+  top:0;
+  left:16px;
+  width:22px;
+  height:22px;
+  display:grid;
+  place-items:center;
+  color:#b78b48;
+  background:#fff;
+  border:1px solid #d9b66e;
+  border-radius:50%;
+  font:14px/1 Arial,sans-serif;
+  box-shadow:0 2px 9px rgba(23,52,84,.13);
+  transition:top .12s linear;
+  pointer-events:none;
+}
+.timeline-card{
+  position:relative;
+  display:block;
+  min-height:0;
+  margin:0 0 18px 78px;
+  padding:22px 25px;
+  background:rgba(255,255,255,.94);
+  border:1px solid #dce5ec;
+  border-radius:3px;
+  text-align:left;
+  box-shadow:0 8px 24px rgba(23,52,84,.05);
+}
+.timeline-card img{
+  position:absolute;
+  left:-78px;
+  top:18px;
+  width:54px;
+  height:54px;
+  margin:0;
+  padding:8px;
+  object-fit:contain;
+  background:#fff;
+  border:1px solid #dce5ec;
+  border-radius:50%;
+}
+.timeline-card h3{font-size:21px;margin:2px 0 6px}
+.timeline-card p{font-size:14px;line-height:1.6}
+.timeline-time{font-size:11px;letter-spacing:.1em}
+.swatches{
+  display:grid;
+  grid-template-columns:repeat(2,82px);
+  justify-content:center;
+  gap:22px 34px;
+}
+.swatch{width:82px}
+.gallery figcaption{display:none}
+@media(max-width:760px){
+  .section.bluewash .section-head,
+  .section.paperwash .section-head{margin-bottom:28px;padding:21px 18px;border-radius:13px}
+  .calendar-grid{gap:3px}
+  .calendar-day{font-size:13px}
+  .timeline{max-width:100%;padding-top:4px}
+  .timeline-card{margin-left:66px;padding:19px 17px}
+  .timeline-card img{left:-66px;width:48px;height:48px;padding:7px}
+  .timeline:before{left:23px}
+  .timeline-heart{left:13px}
+  .swatches{grid-template-columns:repeat(2,72px);gap:18px 25px}
+  .swatch{width:72px}
+}
+@media(max-width:430px){
+  .calendar-weekday{font-size:9px}
+  .calendar-day{font-size:12px}
+  .calendar-month{font-size:34px}
+  .timeline-card h3{font-size:19px}
+  .timeline-card p{font-size:13px}
+}
+
 </style>
 </head>
 <body>
@@ -131,12 +275,11 @@ fieldset{border:0;padding:0;margin:0;min-width:0}.choices{display:flex;flex-wrap
   <div class="hero-inner">
     <div class="eyebrow">Свадебное приглашение</div>
     <h1>Дмитрий <span>&amp;</span> Анжелика</h1>
-    <p class="hero-sub">Приглашаем вас разделить с нами радость нашего свадебного праздника</p>
+    <p class="hero-sub">Будем счастливы видеть вас среди гостей нашего особенного дня</p>
     <div class="hero-date">Суббота · 17 июля 2027 · 15:00</div>
   </div>
   <div class="hero-photo" aria-label="Фотография Дмитрия и Анжелики">
     <img src="assets/couple-main.webp" alt="Дмитрий и Анжелика вместе у воды">
-    <span class="photo-caption">До встречи на нашей свадьбе!</span>
   </div>
 </header>
 
@@ -145,15 +288,25 @@ fieldset{border:0;padding:0;margin:0;min-width:0}.choices{display:flex;flex-wrap
   <div class="wrap">
     <div class="section-head fade-up"><div class="eyebrow">Наш день</div><h2>Дорогие родные и друзья!</h2><p>Мы очень хотим, чтобы этот день стал тёплой встречей всех, кто нам дорог.</p></div>
     <div class="quote-card fade-up">
-      <p>Есть дни, которые хочется разделить с самыми близкими. Для нас таким станет день нашей свадьбы. Мы мечтаем собрать рядом родных и друзей, услышать ваши поздравления, много смеяться, танцевать и просто быть вместе. Нам будет очень приятно, если вы станете частью этого праздника!</p>
+      <p>Мы мечтаем собрать за одним столом родных и друзей, познакомить тех, кто ещё не знаком, услышать ваши поздравления, много смеяться, танцевать и создавать воспоминания, к которым захочется возвращаться. Нам будет очень приятно, если вы станете частью этого праздника!</p>
       <div class="star-rule"><span>✦</span></div>
       <div class="quote-sign">С любовью и в ожидании встречи,<br><strong>Дмитрий и Анжелика</strong></div>
     </div>
     <div class="star-rule"><span>✦</span></div>
     <div class="date-grid fade-up">
       <div class="date-box">
-        <img class="date-icon" src="assets/icon-calendar.png" alt="">
-        <div class="eyebrow">Сохраните дату</div><div class="date-big">17.07.2027</div><p>Суббота · начало в 15:00</p>
+        <div class="eyebrow">Сохраните дату</div>
+        <div class="calendar-month">Июль 2027</div>
+        <div class="calendar-grid" aria-label="Календарь июля 2027 года">
+          <span class="calendar-weekday">ПН</span><span class="calendar-weekday">ВТ</span><span class="calendar-weekday">СР</span><span class="calendar-weekday">ЧТ</span><span class="calendar-weekday">ПТ</span><span class="calendar-weekday">СБ</span><span class="calendar-weekday">ВС</span>
+          <span class="calendar-day empty" aria-hidden="true"></span><span class="calendar-day empty" aria-hidden="true"></span><span class="calendar-day empty" aria-hidden="true"></span>
+          <span class="calendar-day">1</span><span class="calendar-day">2</span><span class="calendar-day">3</span><span class="calendar-day">4</span>
+          <span class="calendar-day">5</span><span class="calendar-day">6</span><span class="calendar-day">7</span><span class="calendar-day">8</span><span class="calendar-day">9</span><span class="calendar-day">10</span><span class="calendar-day">11</span>
+          <span class="calendar-day">12</span><span class="calendar-day">13</span><span class="calendar-day">14</span><span class="calendar-day">15</span><span class="calendar-day">16</span><span class="calendar-day selected" aria-label="17 июля — день свадьбы">17</span><span class="calendar-day">18</span>
+          <span class="calendar-day">19</span><span class="calendar-day">20</span><span class="calendar-day">21</span><span class="calendar-day">22</span><span class="calendar-day">23</span><span class="calendar-day">24</span><span class="calendar-day">25</span>
+          <span class="calendar-day">26</span><span class="calendar-day">27</span><span class="calendar-day">28</span><span class="calendar-day">29</span><span class="calendar-day">30</span><span class="calendar-day">31</span><span class="calendar-day empty" aria-hidden="true"></span>
+        </div>
+        <p>Суббота · начало в 15:00</p>
         <button class="calendar-btn" id="calendar-btn">Добавить в календарь</button>
       </div>
       <div class="count-box">
@@ -170,21 +323,21 @@ fieldset{border:0;padding:0;margin:0;min-width:0}.choices{display:flex;flex-wrap
 
 <section class="section bluewash" id="program">
   <div class="wrap">
-    <div class="section-head fade-up"><div class="eyebrow">План на день</div><h2>Как всё будет</h2><p>Хотим, чтобы этот день прошёл легко, душевно и оставил много тёплых воспоминаний.</p></div>
-    <div class="timeline fade-up">
-      <article class="timeline-card"><img src="assets/icon-pin.png" alt=""><span class="timeline-time">14:00</span><h3>Прибытие гостей</h3><p>Встречаемся, располагаемся и настраиваемся на праздник.</p></article>
-      <article class="timeline-card"><img src="assets/icon-constellation.png" alt=""><span class="timeline-time">15:00</span><h3>Начало праздника</h3><p>Официальная часть, тёплые поздравления и начало нашего общего дня.</p></article>
-      <article class="timeline-card"><img src="assets/icon-camera.png" alt=""><span class="timeline-time">14:00–17:00</span><h3>Фотобудка</h3><p>Три часа для ярких кадров и фотографий на память.</p></article>
-      <article class="timeline-card"><img src="assets/icon-meal.png" alt=""><span class="timeline-time">Далее</span><h3>Праздничный ужин</h3><p>Вкусная еда, поздравления и время для приятных разговоров.</p></article>
-      <article class="timeline-card"><img src="assets/icon-music.png" alt=""><span class="timeline-time">Вечером</span><h3>Вечер вместе</h3><p>Музыка, танцы, сюрпризы и свадебный торт.</p></article>
-    </div>
-    <p class="schedule-note">Подробное расписание добавим ближе к дате.</p>
-  </div>
+    <div class="section-head fade-up"><div class="eyebrow">План на день</div><h2>Как всё будет</h2><p>Самое важное — провести этот летний день вместе.</p></div>
+    <div class="timeline fade-up" id="timeline">
+      <div class="timeline-heart" id="timeline-heart" aria-hidden="true">♥</div>
+      <article class="timeline-card"><img src="assets/icon-pin.png" alt=""><span class="timeline-time">14:00</span><h3>Сбор гостей</h3><p>Встречаемся, располагаемся и настраиваемся на праздник.</p></article>
+      <article class="timeline-card"><img src="assets/icon-constellation.png" alt=""><span class="timeline-time">15:00</span><h3>Начало праздника</h3><p>Церемония, поздравления и первые общие фотографии.</p></article>
+      <article class="timeline-card"><img src="assets/icon-meal.png" alt=""><span class="timeline-time">После церемонии</span><h3>Праздничный ужин</h3><p>Время для вкусной еды, тёплых слов и приятных разговоров.</p></article>
+      <article class="timeline-card"><img src="assets/icon-camera.png" alt=""><span class="timeline-time">В течение вечера</span><h3>Фотобудка и развлечения</h3><p>Сохраним этот день не только в памяти, но и на снимках.</p></article>
+      <article class="timeline-card"><img src="assets/icon-gift.png" alt=""><span class="timeline-time">20:30</span><h3>Свадебный торт</h3><p>Самый сладкий момент нашего вечера.</p></article>
+      <article class="timeline-card"><img src="assets/icon-toast.png" alt=""><span class="timeline-time">22:00</span><h3>Завершение нашего вечера</h3><p>До новых встреч и тёплых воспоминаний!</p></article>
+    </div>  </div>
 </section>
 
 <section class="section white" id="place">
   <div class="wrap">
-    <div class="section-head fade-up"><div class="eyebrow">Место встречи</div><h2>Увидимся на «Острове»</h2><p>Среди зелени, у воды и в окружении самых близких людей.</p></div>
+    <div class="section-head fade-up"><div class="eyebrow">Место встречи</div><h2>Увидимся на «Острове»</h2><p>Белоснежный шатёр, зелёный сад и пруд рядом — всё для нашего летнего праздника.</p></div>
     <div class="place-card fade-up">
       <div class="place-photo"><img src="assets/place-pond.webp" alt="Пруд и домики на территории парк-отеля «Остров»"></div>
       <div class="place-copy">
@@ -205,8 +358,7 @@ fieldset{border:0;padding:0;margin:0;min-width:0}.choices{display:flex;flex-wrap
       <div class="swatch" title="Тёмно-синий"><i style="background:#173454"></i></div>
       <div class="swatch" title="Голубой"><i style="background:#9db8d0"></i></div>
       <div class="swatch" title="Зелёный"><i style="background:#58715f"></i></div>
-      <div class="swatch" title="Серебристый"><i style="background:#c6ccd4"></i></div>
-      <div class="swatch" title="Янтарный"><i style="background:#e4b75f"></i></div>
+      <div class="swatch" title="Шампань"><i style="background:#e4b75f"></i></div>
     </div>
     <div class="dress-note fade-up">Необязательно подбирать наряд точно в тон нашей палитре. Будем рады, если вы вдохновитесь этими оттенками при выборе образа. Главное — чтобы вам было комфортно!</div>
   </div>
@@ -219,12 +371,12 @@ fieldset{border:0;padding:0;margin:0;min-width:0}.choices{display:flex;flex-wrap
       <article class="wish">
         <svg class="wish-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M12 27h40v29H12z" stroke="#536b82" stroke-width="1.8"/><path d="M9 22h46v8H9z" stroke="#536b82" stroke-width="1.8"/><path d="M32 22v34M32 22c-12 0-17-12-9-14 7-2 9 14 9 14Zm0 0c12 0 17-12 9-14-7-2-9 14-9 14Z" stroke="#536b82" stroke-width="1.8" stroke-linejoin="round"/><path d="m48 10 2-4m5 9 4-1" stroke="#dcae59" stroke-width="2" stroke-linecap="round"/></svg>
         <h3>Вместо цветов</h3>
-        <p>После свадьбы мы сразу отправимся к родным в Сургут, поэтому, к сожалению, не сможем насладиться букетами дома. Будем благодарны, если вы поддержите нашу просьбу не дарить цветы — ваше присутствие в этот день для нас гораздо важнее.</p>
+        <p>После свадьбы мы планируем ненадолго уехать к родным, поэтому не сможем насладиться букетами дома. Если вы захотите поздравить нас цветами, будем рады, если вместо букета вы поддержите наше свадебное путешествие.</p>
       </article>
       <article class="wish">
         <svg class="wish-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="7" y="16" width="50" height="36" rx="2" stroke="#536b82" stroke-width="1.8"/><path d="m8 19 24 19 24-19M8 50l17-15m31 15L39 35" stroke="#536b82" stroke-width="1.8" stroke-linejoin="round"/><path d="m32 27 3-3c4-4 10 2 5 6l-8 7-8-7c-5-4 1-10 5-6l3 3Z" stroke="#dcae59" stroke-width="1.7" stroke-linejoin="round"/><path d="M13 9h7m-3.5-3.5v7" stroke="#dcae59" stroke-width="1.6" stroke-linecap="round"/></svg>
         <h3>О подарке</h3>
-        <p>Мы знаем, что каждый подарок выбирается с душой, и нам будет приятно любое ваше внимание. Но если вы ещё думаете, чем нас порадовать, будем признательны за конверт. Такой подарок позволит нам вместе выбрать то, что будет особенно нужно нашей молодой семье.</p>
+        <p>Мы знаем, что каждый подарок выбирается с душой, и нам будет приятно любое ваше внимание. Но если вы ещё думаете, чем нас порадовать, будем признательны за конверт. Сейчас мы копим на свадебное путешествие, и ваш подарок поможет нам приблизить эту мечту.</p>
       </article>
     </div>
   </div>
@@ -232,18 +384,14 @@ fieldset{border:0;padding:0;margin:0;min-width:0}.choices{display:flex;flex-wrap
 
 <section class="section paperwash" id="story">
   <div class="wrap">
-    <div class="section-head fade-up"><div class="eyebrow">Немного нашей истории</div><h2>История, начавшаяся с двух лекций</h2><p>Иногда важные встречи происходят совершенно неожиданно.</p></div>
+    <div class="section-head fade-up"><div class="eyebrow">Наша история</div><h2>Как мы познакомились</h2></div>
     <div class="story-shell fade-up">
       <div class="story-layout">
-        <div class="story-photo"><img src="assets/couple-formal.webp" alt="Дмитрий и Анжелика на совместной прогулке"></div>
+        <div class="story-photo"><img src="assets/couple-formal.webp" alt="Дмитрий и Анжелика вместе"></div>
         <div class="story-copy">
-          <div class="eyebrow">Зима 2025 года · стажировка · две лекции</div>
-          <h3>Дорогие гости!</h3>
-          <p>Мало кто знает историю нашего знакомства, поэтому мы с большой радостью хотим поделиться ею с вами.</p>
-          <p>Зимой 2025 года каждый из нас получил приглашение на стажировку от одной крупной компании. Более 300 участников должны были посещать лекции по информационной безопасности, которые проходили дважды в неделю на протяжении нескольких месяцев.</p>
-          <p>Анжелика посетила всего две лекции. И оба раза среди слушателей оказался Дмитрий.</p>
-          <p>Тогда мы ещё не знали, что эти две встречи станут началом чего-то важного. Среди сотен участников, расписаний и лекций именно так началась наша история.</p>
-          <div class="story-callout">Сегодня мы с радостью приглашаем вас стать частью её новой главы.</div>
+          <h3>Всё началось со знакомства</h3>
+          <p>Мы встретились на стажировке: сначала были общие лекции и разговоры, а потом — всё больше поводов проводить время вместе.</p>
+          <p>Теперь мы готовимся к свадьбе и хотим разделить этот день с вами.</p>
         </div>
       </div>
     </div>
@@ -254,12 +402,11 @@ fieldset{border:0;padding:0;margin:0;min-width:0}.choices{display:flex;flex-wrap
   <div class="wrap">
     <div class="section-head fade-up"><div class="eyebrow">Несколько воспоминаний</div><h2>Наши моменты</h2><p>Немного совместных поездок, прогулок и маленьких приключений.</p></div>
     <div class="gallery fade-up">
-      <figure><img src="assets/couple-kiss.webp" alt="Дмитрий и Анжелика на прогулке по реке"><figcaption>Один из тех самых дней</figcaption></figure>
-      <figure><img src="assets/couple-night.webp" alt="Дмитрий и Анжелика на вечерней прогулке"><figcaption>Город, огни и мы</figcaption></figure>
-      <figure><img src="assets/couple-kayak.webp" alt="Совместное приключение на воде"><figcaption>Маленькие приключения</figcaption></figure>
-      <figure><img src="assets/couple-fun.webp" alt="Летний отдых на природе"><figcaption>Лето, которое запомнилось</figcaption></figure>
-      <figure><img src="assets/couple-winter.webp" alt="Зимняя прогулка Дмитрия и Анжелики"><figcaption>Тепло даже зимой</figcaption></figure>
-      <figure><img src="assets/couple-main.webp" alt="Дмитрий и Анжелика вместе у воды"><figcaption>И снова мы</figcaption></figure>
+      <figure><img src="assets/couple-night.webp" alt="Дмитрий и Анжелика на вечерней прогулке"></figure>
+      <figure><img src="assets/couple-kayak.webp" alt="Дмитрий и Анжелика на воде"></figure>
+      <figure><img src="assets/couple-fun.webp" alt="Дмитрий и Анжелика на летнем отдыхе"></figure>
+      <figure><img src="assets/couple-winter.webp" alt="Дмитрий и Анжелика на зимней прогулке"></figure>
+      <figure><img src="assets/couple-main.webp" alt="Дмитрий и Анжелика вместе у воды"></figure>
     </div>
   </div>
 </section>
@@ -294,7 +441,7 @@ fieldset{border:0;padding:0;margin:0;min-width:0}.choices{display:flex;flex-wrap
 </section>
 </main>
 
-<footer class="footer"><h2>До скорой встречи!</h2><p>Спасибо, что будете рядом в этот день.</p><div class="script">Дмитрий &amp; Анжелика</div><small>17 · 07 · 2027</small></footer>
+<footer class="footer"><h2>До встречи на нашей свадьбе!</h2><p>Спасибо, что будете рядом в этот день.</p><div class="script">Дмитрий &amp; Анжелика</div><small>17 · 07 · 2027</small></footer>
 
 <script>
 const WEDDING_DATE = new Date('2027-07-17T15:00:00+03:00');
@@ -327,5 +474,29 @@ if('IntersectionObserver' in window){
   document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
 }else{document.querySelectorAll('.fade-up').forEach(el=>el.classList.add('visible'));}
 </script>
+
+<script>
+(function(){
+  const timeline = document.getElementById('timeline');
+  const heart = document.getElementById('timeline-heart');
+  if(!timeline || !heart) return;
+  let frame = 0;
+  function updateHeart(){
+    frame = 0;
+    const rect = timeline.getBoundingClientRect();
+    const maxTop = Math.max(0, timeline.offsetHeight - heart.offsetHeight);
+    const guide = window.innerHeight * 0.52;
+    const progress = Math.max(0, Math.min(1, (guide - rect.top) / Math.max(1, rect.height)));
+    heart.style.top = (progress * maxTop) + 'px';
+  }
+  function requestUpdate(){
+    if(!frame) frame = window.requestAnimationFrame(updateHeart);
+  }
+  window.addEventListener('scroll', requestUpdate, {passive:true});
+  window.addEventListener('resize', requestUpdate);
+  updateHeart();
+})();
+</script>
+
 </body>
 </html>
