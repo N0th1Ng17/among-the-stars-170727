@@ -36,17 +36,34 @@ img{display:block;max-width:100%}
 .nav{display:flex;gap:22px;align-items:center;font:11px Arial,sans-serif;letter-spacing:.09em;text-transform:uppercase}
 .nav a{text-decoration:none;opacity:.9;white-space:nowrap}.nav a:hover{opacity:1;color:#f3d79e}
 .menu-toggle{display:none;border:1px solid #ffffff70;background:#ffffff20;color:white;padding:9px 13px;border-radius:30px}
-.hero{position:relative;min-height:770px;padding:130px 0 135px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:visible;background:#eaf0f5 url('assets/hero-sky.webp') center 46%/cover no-repeat}
+.hero{position:relative;min-height:850px;padding:175px 0 175px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:#eaf0f5 url('assets/hero-sky.webp') center 46%/cover no-repeat}
 .hero:before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,31,52,.12),rgba(255,255,255,.02) 27%,rgba(255,255,255,.10) 72%,rgba(255,255,255,.22));pointer-events:none}
-.hero-inner{position:relative;z-index:1;width:min(900px,calc(100% - 36px));margin:auto;padding:25px 20px 0}
+.hero-inner{position:relative;z-index:2;width:min(900px,calc(100% - 36px));margin:auto;padding:48px 20px 12px}
+.shooting-star{position:absolute;z-index:1;top:17%;left:-190px;width:150px;height:2px;opacity:0;pointer-events:none;transform:rotate(14deg);transform-origin:right center;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,0) 28%,rgba(255,239,197,.72) 78%,#fff 100%);filter:drop-shadow(0 0 5px rgba(255,239,197,.9));animation:comet-flight 13s ease-in-out infinite}
+.shooting-star:before{content:'✦';position:absolute;right:-7px;top:50%;transform:translateY(-54%) rotate(-14deg);font:19px/1 Georgia,serif;color:#fff8dc;text-shadow:0 0 7px #fff,0 0 15px #f5d58e}
+.shooting-star:after{content:'';position:absolute;right:0;top:50%;width:8px;height:8px;transform:translate(50%,-50%);border-radius:50%;background:#fff9df;box-shadow:0 0 8px 3px rgba(255,244,205,.9),0 0 22px 7px rgba(255,235,175,.55)}
+.hero-stars{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.hero-star{position:absolute;display:block;color:rgba(255,255,255,.9);font:16px/1 Georgia,serif;text-shadow:0 0 7px rgba(255,255,255,.9),0 0 15px rgba(255,237,190,.6);animation:star-twinkle 3.8s ease-in-out infinite}
+.hero-star:nth-child(1){top:13%;left:18%;font-size:17px;animation-delay:-.7s}
+.hero-star:nth-child(2){top:27%;left:77%;font-size:12px;animation-delay:-2.1s}
+.hero-star:nth-child(3){top:39%;left:27%;font-size:10px;animation-delay:-1.3s}
+.hero-star:nth-child(4){top:19%;left:62%;font-size:14px;animation-delay:-2.8s}
+.hero-star:nth-child(5){top:46%;left:86%;font-size:11px;animation-delay:-.2s}
+@keyframes star-twinkle{0%,100%{opacity:.28;transform:scale(.72) rotate(0deg)}50%{opacity:1;transform:scale(1.18) rotate(18deg)}}
+@keyframes comet-flight{
+  0%,58%{opacity:0;transform:translate3d(0,0,0) rotate(14deg)}
+  61%{opacity:.95}
+  76%{opacity:.9}
+  88%,100%{opacity:0;transform:translate3d(calc(100vw + 420px),250px,0) rotate(14deg)}
+}
 .hero .eyebrow{color:#284a68;letter-spacing:.32em;text-shadow:0 1px 12px #fff9}
 .hero h1{font-size:clamp(54px,8.4vw,104px);font-weight:400;line-height:.98;letter-spacing:-.055em;color:var(--navy);margin:22px 0 17px;text-shadow:0 2px 18px rgba(255,255,255,.55)}
 .hero h1 span{display:block;font-size:.42em;line-height:1.25;letter-spacing:.05em;color:#54718e;font-style:italic;margin:8px 0}
 .hero-sub{font-size:clamp(16px,2vw,20px);color:#294863;max-width:620px;margin:0 auto 20px;text-shadow:0 1px 10px #fff9}
 .hero-date{display:flex;justify-content:center;align-items:center;gap:16px;margin:22px auto 0;color:#735821;font:600 12px Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase}
 .hero-date:before,.hero-date:after{content:'';width:48px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}.hero-date:after{transform:scaleX(-1)}
-.hero-photo{position:absolute;z-index:2;width:min(510px,calc(100% - 56px));height:270px;left:50%;bottom:-82px;transform:translateX(-50%);padding:9px;background:rgba(255,255,255,.96);box-shadow:0 22px 55px rgba(23,52,84,.22);border:1px solid rgba(255,255,255,.9)}
-.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 43%}
+.hero-photo{position:absolute;z-index:2;width:min(510px,calc(100% - 56px));height:auto;left:50%;bottom:0;transform:translateX(-50%);padding:9px;background:rgba(255,255,255,.96);box-shadow:0 22px 55px rgba(23,52,84,.22);border:1px solid rgba(255,255,255,.9)}
+.hero-photo img{width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;object-position:center}
 .photo-caption{position:absolute;right:16px;bottom:13px;padding:5px 10px;background:#fffdf0e8;color:#425c75;font:italic 12px Georgia,serif}
 .section{position:relative;padding:100px 0}
 .section.white{background:#fff}
@@ -81,7 +98,7 @@ h2{font-size:clamp(32px,4.5vw,49px);line-height:1.12;font-weight:400;letter-spac
 .place-copy{padding:clamp(28px,5vw,54px);display:flex;flex-direction:column;justify-content:center}
 .place-copy h3{font-size:clamp(27px,3vw,36px);line-height:1.15;font-weight:400;color:var(--navy);margin:8px 0 14px}
 .place-copy p{font-size:15px;color:var(--muted);margin:0 0 14px}
-.address{padding:15px 17px;background:#f1f5f8;border-left:2px solid var(--gold);font-size:14px;color:#52677b;margin:10px 0 18px}
+.address{display:block;padding:15px 17px;background:#f1f5f8;border-left:2px solid var(--gold);font-size:14px;line-height:1.8;color:#52677b;margin:10px 0 18px;text-decoration:none;transition:background .2s ease,color .2s ease}.address:hover{background:#e8f0f6;color:var(--navy)}.address-hint{display:inline-block;margin-top:7px;color:var(--navy);font:600 10px Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}
 .map-actions{display:flex;gap:10px;flex-wrap:wrap}.map-actions a{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:999px;background:var(--navy);color:#fff;text-decoration:none;font:600 10px Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase}.map-actions a:hover{background:#294d70}
 .dress-intro{max-width:730px;margin:0 auto 28px;text-align:center;color:var(--muted);font-size:16px}
 .swatches{display:flex;justify-content:center;gap:26px;flex-wrap:wrap;margin:30px auto}.swatch{width:82px;text-align:center}.swatch i{display:block;width:72px;height:72px;border-radius:50%;margin:0 auto;border:4px solid white;box-shadow:0 0 0 1px #d8e0e7}
@@ -105,15 +122,15 @@ h2{font-size:clamp(32px,4.5vw,49px);line-height:1.12;font-weight:400;letter-spac
 fieldset{border:0;padding:0;margin:0;min-width:0}.choices{display:flex;flex-wrap:wrap;gap:9px}.choice{position:relative}.choice input{position:absolute;opacity:0;inset:0}.choice span{display:inline-block;border:1px solid #d5dee7;padding:9px 13px;border-radius:999px;color:#526276;font:13px Arial,sans-serif;cursor:pointer;transition:.2s}.choice input:checked+span{background:#e9f0f5;border-color:#6d89a4;color:#193653}.choice input:focus-visible+span{outline:2px solid #6d89a4;outline-offset:2px}
 .form-submit{border:0;background:var(--navy);color:white;padding:16px 24px;cursor:pointer;font:600 10px Arial,sans-serif;letter-spacing:.17em;text-transform:uppercase;transition:.2s}.form-submit:hover{background:#244565}.form-note{font-size:12px;color:#718093;margin:0}.form-success{display:none;padding:16px;background:#edf4ef;border:1px solid #cbdccd;color:#355c43}.local-tools{margin-top:25px;padding-top:16px;border-top:1px solid var(--line);font:12px Arial,sans-serif;color:#728092}.local-tools summary{cursor:pointer}.local-tools button{margin:8px 10px 0 0;border:1px solid #d5dee7;background:white;padding:8px 11px;color:#405b75;cursor:pointer}
 .contact-card{max-width:760px;margin:auto;padding:35px;background:#fff;border:1px solid #dce5ec;text-align:center}.contact-card p{color:var(--muted);margin:0 0 15px}.phone{font-size:clamp(24px,4vw,34px);color:var(--navy);text-decoration:none;letter-spacing:.04em}.contact-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:22px}.contact-actions a{padding:11px 17px;background:var(--navy);color:white;text-decoration:none;border-radius:999px;font:600 10px Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase}.contact-actions a.light{background:#eef3f7;color:var(--navy);border:1px solid #d5dfe7}
-.footer{padding:78px 20px 45px;text-align:center;background:#eaf0f5 url('assets/footer-sky.webp') center/cover no-repeat;color:var(--navy);position:relative;overflow:hidden}.footer:before{content:'✦      ·       ✧       ·      ✦';display:block;color:#cba75f;letter-spacing:1em;margin-bottom:22px}.footer h2{margin:0 0 10px}.footer p{color:#617487;margin:0 0 18px}.footer .script{font-family:'Segoe Script','Brush Script MT',cursive;font-size:31px;color:#496783}.footer small{display:block;margin-top:25px;color:#65788b;font:10px Arial,sans-serif;letter-spacing:.08em}
+.footer{padding:78px 20px 45px;text-align:center;background:#eaf0f5 url('assets/footer-sky.webp') center/cover no-repeat;color:var(--navy);position:relative;overflow:hidden}.footer:before{content:'✦      ·       ✧       ·      ✦';display:block;color:#cba75f;letter-spacing:1em;margin-bottom:22px}.footer h2{margin:0 0 10px}.footer p{display:inline-block;color:#173454;background:rgba(255,255,255,.82);padding:8px 16px;border-radius:5px;margin:0 0 18px;text-shadow:0 1px 0 #fff}.footer .script{font-family:'Segoe Script','Brush Script MT',cursive;font-size:31px;color:#294c6c;text-shadow:0 1px 8px rgba(255,255,255,.8)}.footer small{display:block;margin-top:25px;color:#344f69;font:10px Arial,sans-serif;letter-spacing:.08em;text-shadow:0 1px 8px rgba(255,255,255,.8)}
 .fade-up{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}.fade-up.visible{opacity:1;transform:none}
 @media(max-width:1000px){.nav{gap:13px;font-size:10px}.timeline{grid-template-columns:repeat(3,minmax(0,1fr))}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:760px){
   .nav{display:none;position:absolute;top:58px;left:21px;right:21px;padding:17px;background:#fffffff2;color:var(--navy);box-shadow:var(--shadow);border:1px solid var(--line);flex-direction:column;gap:14px}.nav.open{display:flex}.menu-toggle{display:block}
-  .hero{min-height:700px;padding:110px 0 155px;background-position:center center}.hero h1{font-size:clamp(48px,13vw,75px)}.hero-photo{height:220px;bottom:-65px}.section{padding:76px 0}.date-grid,.place-card,.story-layout{grid-template-columns:1fr}.date-box,.count-box{min-height:190px}.timeline{grid-template-columns:1fr 1fr;max-width:560px}.timeline-card{min-height:190px}.place-photo{min-height:270px}.place-copy{padding:28px}.story-layout{gap:24px}.story-photo{max-width:440px;margin:auto}.story-photo img{max-height:400px}.story-copy{padding:0 4px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.gallery img{max-height:330px}.wishes-grid{grid-template-columns:1fr}.wish{min-height:unset}.quote-card{padding:42px 24px}.rsvp-shell{padding:23px 18px}.contact-card{padding:28px 18px}
+  .hero{min-height:760px;padding:145px 0 155px;background-position:center center}.hero-inner{padding:52px 12px 8px}.hero h1{font-size:clamp(48px,13vw,75px)}.hero-photo{height:auto;bottom:0}.shooting-star{top:14%;width:112px;animation-duration:15s}.hero-star:nth-child(3){left:13%}.hero-star:nth-child(5){left:89%}.section{padding:76px 0}.date-grid,.place-card,.story-layout{grid-template-columns:1fr}.date-box,.count-box{min-height:190px}.timeline{grid-template-columns:1fr 1fr;max-width:560px}.timeline-card{min-height:190px}.place-photo{min-height:270px}.place-copy{padding:28px}.story-layout{gap:24px}.story-photo{max-width:440px;margin:auto}.story-photo img{max-height:400px}.story-copy{padding:0 4px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.gallery img{max-height:330px}.wishes-grid{grid-template-columns:1fr}.wish{min-height:unset}.quote-card{padding:42px 24px}.rsvp-shell{padding:23px 18px}.contact-card{padding:28px 18px}
 }
 @media(max-width:430px){.wrap{width:min(100% - 30px,1120px)}.hero-date{font-size:10px;letter-spacing:.12em;gap:9px}.hero-date:before,.hero-date:after{width:24px}.count-grid{gap:5px}.count-unit b{font-size:24px}.count-unit span{font-size:8px}.timeline{grid-template-columns:1fr}.timeline-card{min-height:unset}.gallery{grid-template-columns:1fr}.gallery img{max-height:420px}.swatches{gap:17px}.swatch{width:65px}.swatch i{width:60px;height:60px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fade-up{opacity:1;transform:none;transition:none}*{transition:none!important}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.fade-up{opacity:1;transform:none;transition:none}.shooting-star,.hero-stars{display:none}*{transition:none!important}}
 
 /* Wedding-site refinements */
 .section.paperwash{
@@ -174,15 +191,9 @@ fieldset{border:0;padding:0;margin:0;min-width:0}.choices{display:flex;flex-wrap
   max-width:790px;
   padding:8px 0 8px;
 }
-.timeline:before{
-  content:"";
-  position:absolute;
-  top:18px;
-  bottom:22px;
-  left:26px;
-  width:2px;
-  background:linear-gradient(to bottom,#d5b477,#9db8d0 55%,#d5b477);
-}
+.timeline:before{display:none}
+.timeline-route{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:0}
+.timeline-route path{fill:none;stroke:#d5b477;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.9;vector-effect:non-scaling-stroke}
 .timeline-heart{
   position:absolute;
   z-index:3;
@@ -203,9 +214,10 @@ fieldset{border:0;padding:0;margin:0;min-width:0}.choices{display:flex;flex-wrap
 }
 .timeline-card{
   position:relative;
+  z-index:1;
   display:block;
   min-height:0;
-  margin:0 0 18px 78px;
+  margin:0 0 18px 92px;
   padding:22px 25px;
   background:rgba(255,255,255,.94);
   border:1px solid #dce5ec;
@@ -215,7 +227,7 @@ fieldset{border:0;padding:0;margin:0;min-width:0}.choices{display:flex;flex-wrap
 }
 .timeline-card img{
   position:absolute;
-  left:-78px;
+  left:-92px;
   top:18px;
   width:54px;
   height:54px;
@@ -226,8 +238,7 @@ fieldset{border:0;padding:0;margin:0;min-width:0}.choices{display:flex;flex-wrap
   border:1px solid #dce5ec;
   border-radius:50%;
 }
-.timeline-card h3{font-size:21px;margin:2px 0 6px}
-.timeline-card p{font-size:14px;line-height:1.6}
+.timeline-card h3{font-size:21px;margin:2px 0 0}
 .timeline-time{font-size:11px;letter-spacing:.1em}
 .swatches{
   display:grid;
@@ -235,7 +246,7 @@ fieldset{border:0;padding:0;margin:0;min-width:0}.choices{display:flex;flex-wrap
   justify-content:center;
   gap:22px 34px;
 }
-.swatch{width:82px}
+.swatch{width:92px}.swatch i{width:84px;height:84px}
 .gallery figcaption{display:none}
 @media(max-width:760px){
   .section.bluewash .section-head,
@@ -243,19 +254,17 @@ fieldset{border:0;padding:0;margin:0;min-width:0}.choices{display:flex;flex-wrap
   .calendar-grid{gap:3px}
   .calendar-day{font-size:13px}
   .timeline{max-width:100%;padding-top:4px}
-  .timeline-card{margin-left:66px;padding:19px 17px}
-  .timeline-card img{left:-66px;width:48px;height:48px;padding:7px}
-  .timeline:before{left:23px}
+  .timeline-card{margin-left:78px;padding:19px 17px}
+  .timeline-card img{left:-78px;width:48px;height:48px;padding:7px}
   .timeline-heart{left:13px}
-  .swatches{grid-template-columns:repeat(2,72px);gap:18px 25px}
-  .swatch{width:72px}
+  .swatches{grid-template-columns:repeat(2,82px);gap:20px 28px}
+  .swatch{width:82px}.swatch i{width:76px;height:76px}
 }
 @media(max-width:430px){
   .calendar-weekday{font-size:9px}
   .calendar-day{font-size:12px}
   .calendar-month{font-size:34px}
   .timeline-card h3{font-size:19px}
-  .timeline-card p{font-size:13px}
 }
 
 </style>
@@ -272,6 +281,10 @@ fieldset{border:0;padding:0;margin:0;min-width:0}.choices{display:flex;flex-wrap
 </header>
 
 <header class="hero" id="top">
+  <div class="shooting-star" aria-hidden="true"></div>
+  <div class="hero-stars" aria-hidden="true">
+    <span class="hero-star">✦</span><span class="hero-star">✧</span><span class="hero-star">✦</span><span class="hero-star">✧</span><span class="hero-star">✦</span>
+  </div>
   <div class="hero-inner">
     <div class="eyebrow">Свадебное приглашение</div>
     <h1>Дмитрий <span>&amp;</span> Анжелика</h1>
@@ -284,11 +297,11 @@ fieldset{border:0;padding:0;margin:0;min-width:0}.choices{display:flex;flex-wrap
 </header>
 
 <main>
-<section class="section white" id="invitation" style="padding-top:150px">
+<section class="section white" id="invitation" style="padding-top:80px">
   <div class="wrap">
-    <div class="section-head fade-up"><div class="eyebrow">Наш день</div><h2>Дорогие родные и друзья!</h2><p>Мы очень хотим, чтобы этот день стал тёплой встречей всех, кто нам дорог.</p></div>
+    <div class="section-head fade-up"><h2>Особенный день, который мы хотим разделить с вами</h2></div>
     <div class="quote-card fade-up">
-      <p>Мы мечтаем собрать за одним столом родных и друзей, познакомить тех, кто ещё не знаком, услышать ваши поздравления, много смеяться, танцевать и создавать воспоминания, к которым захочется возвращаться. Нам будет очень приятно, если вы станете частью этого праздника!</p>
+      <p>Нам хочется провести этот день в окружении дорогих нам людей, наполнить его тёплыми словами, искренними улыбками, смехом и танцами. Мы надеемся, что этот праздник подарит нам всем много счастливых моментов и воспоминаний, к которым захочется возвращаться. Будем очень рады разделить его с вами!</p>
       <div class="star-rule"><span>✦</span></div>
       <div class="quote-sign">С любовью и в ожидании встречи,<br><strong>Дмитрий и Анжелика</strong></div>
     </div>
@@ -323,28 +336,26 @@ fieldset{border:0;padding:0;margin:0;min-width:0}.choices{display:flex;flex-wrap
 
 <section class="section bluewash" id="program">
   <div class="wrap">
-    <div class="section-head fade-up"><div class="eyebrow">План на день</div><h2>Как всё будет</h2><p>Самое важное — провести этот летний день вместе.</p></div>
+    <div class="section-head fade-up"><h2>Программа дня</h2></div>
     <div class="timeline fade-up" id="timeline">
       <div class="timeline-heart" id="timeline-heart" aria-hidden="true">♥</div>
-      <article class="timeline-card"><img src="assets/icon-pin.png" alt=""><span class="timeline-time">14:00</span><h3>Сбор гостей</h3><p>Встречаемся, располагаемся и настраиваемся на праздник.</p></article>
-      <article class="timeline-card"><img src="assets/icon-constellation.png" alt=""><span class="timeline-time">15:00</span><h3>Начало праздника</h3><p>Церемония, поздравления и первые общие фотографии.</p></article>
-      <article class="timeline-card"><img src="assets/icon-meal.png" alt=""><span class="timeline-time">После церемонии</span><h3>Праздничный ужин</h3><p>Время для вкусной еды, тёплых слов и приятных разговоров.</p></article>
-      <article class="timeline-card"><img src="assets/icon-camera.png" alt=""><span class="timeline-time">В течение вечера</span><h3>Фотобудка и развлечения</h3><p>Сохраним этот день не только в памяти, но и на снимках.</p></article>
-      <article class="timeline-card"><img src="assets/icon-gift.png" alt=""><span class="timeline-time">20:30</span><h3>Свадебный торт</h3><p>Самый сладкий момент нашего вечера.</p></article>
-      <article class="timeline-card"><img src="assets/icon-toast.png" alt=""><span class="timeline-time">22:00</span><h3>Завершение нашего вечера</h3><p>До новых встреч и тёплых воспоминаний!</p></article>
+      <article class="timeline-card"><img src="assets/icon-pin.png" alt=""><span class="timeline-time">14:00</span><h3>Сбор гостей</h3></article>
+      <article class="timeline-card"><img src="assets/icon-constellation.png" alt=""><span class="timeline-time">15:00</span><h3>Начало праздника</h3></article>
+      <article class="timeline-card"><img src="assets/icon-camera.png" alt=""><span class="timeline-time">В течение вечера</span><h3>Фотобудка и развлечения</h3></article>
+      <article class="timeline-card"><img src="assets/icon-gift.png" alt=""><span class="timeline-time">20:30</span><h3>Свадебный торт</h3></article>
+      <article class="timeline-card"><img src="assets/icon-toast.png" alt=""><span class="timeline-time">22:00</span><h3>Завершение нашего вечера</h3></article>
     </div>  </div>
 </section>
 
 <section class="section white" id="place">
   <div class="wrap">
-    <div class="section-head fade-up"><div class="eyebrow">Место встречи</div><h2>Увидимся на «Острове»</h2><p>Белоснежный шатёр, зелёный сад и пруд рядом — всё для нашего летнего праздника.</p></div>
+    <div class="section-head fade-up"><h2>Место встречи</h2></div>
     <div class="place-card fade-up">
       <div class="place-photo"><img src="assets/place-pond.webp" alt="Пруд и домики на территории парк-отеля «Остров»"></div>
       <div class="place-copy">
-        <div class="eyebrow">Площадка торжества</div><h3>Парк-отель «Остров»</h3>
+        <h3>Парк-отель «Остров»</h3>
         <p>Будем ждать вас в шатре на территории загородной площадки. Рядом — зелёный сад, пруд и домики.</p>
-        <div class="address">Каширское шоссе, 6 км от МКАД<br>Московская область, Ленинский район,<br>село Остров, Новая ул., 1А</div>
-        <div class="map-actions"><a target="_blank" rel="noopener" href="https://yandex.com/maps/-/CXCBeJ9V">Открыть в Яндекс Картах</a></div>
+        <a class="address" target="_blank" rel="noopener" href="https://yandex.com/maps/-/CXCBeJ9V" aria-label="Открыть адрес парк-отеля «Остров» в Яндекс Картах">Каширское шоссе, 6 км от МКАД<br>Московская область, Ленинский район,<br>село Остров, Новая ул., 1А<br><span class="address-hint">Открыть в Яндекс Картах ↗</span></a>
       </div>
     </div>
   </div>
@@ -355,10 +366,10 @@ fieldset{border:0;padding:0;margin:0;min-width:0}.choices{display:flex;flex-wrap
     <div class="section-head fade-up"><div class="eyebrow">Дресс-код</div><h2>Цветовая палитра</h2></div>
     <p class="dress-intro fade-up">У нас нет строгого дресс-кода — самое главное, чтобы вам было комфортно. Но нам будет приятно, если вы вдохновитесь оттенками нашего праздника.</p>
     <div class="swatches fade-up" aria-label="Цвета палитры">
-      <div class="swatch" title="Тёмно-синий"><i style="background:#173454"></i></div>
-      <div class="swatch" title="Голубой"><i style="background:#9db8d0"></i></div>
-      <div class="swatch" title="Зелёный"><i style="background:#58715f"></i></div>
-      <div class="swatch" title="Шампань"><i style="background:#e4b75f"></i></div>
+      <div class="swatch"><i style="background:#173454"></i></div>
+      <div class="swatch"><i style="background:#9db8d0"></i></div>
+      <div class="swatch"><i style="background:#58715f"></i></div>
+      <div class="swatch"><i style="background:#e4b75f"></i></div>
     </div>
     <div class="dress-note fade-up">Необязательно подбирать наряд точно в тон нашей палитре. Будем рады, если вы вдохновитесь этими оттенками при выборе образа. Главное — чтобы вам было комфортно!</div>
   </div>
@@ -371,7 +382,7 @@ fieldset{border:0;padding:0;margin:0;min-width:0}.choices{display:flex;flex-wrap
       <article class="wish">
         <svg class="wish-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M12 27h40v29H12z" stroke="#536b82" stroke-width="1.8"/><path d="M9 22h46v8H9z" stroke="#536b82" stroke-width="1.8"/><path d="M32 22v34M32 22c-12 0-17-12-9-14 7-2 9 14 9 14Zm0 0c12 0 17-12 9-14-7-2-9 14-9 14Z" stroke="#536b82" stroke-width="1.8" stroke-linejoin="round"/><path d="m48 10 2-4m5 9 4-1" stroke="#dcae59" stroke-width="2" stroke-linecap="round"/></svg>
         <h3>Вместо цветов</h3>
-        <p>После свадьбы мы планируем ненадолго уехать к родным, поэтому не сможем насладиться букетами дома. Если вы захотите поздравить нас цветами, будем рады, если вместо букета вы поддержите наше свадебное путешествие.</p>
+        <p>После свадьбы мы планируем уехать, поэтому, к сожалению, не сможем насладиться цветами дома. Будем благодарны, если вы воздержитесь от цветочных подарков — нам гораздо важнее разделить этот день с вами!</p>
       </article>
       <article class="wish">
         <svg class="wish-icon" viewBox="0 0 64 64" fill="none" aria-hidden="true"><rect x="7" y="16" width="50" height="36" rx="2" stroke="#536b82" stroke-width="1.8"/><path d="m8 19 24 19 24-19M8 50l17-15m31 15L39 35" stroke="#536b82" stroke-width="1.8" stroke-linejoin="round"/><path d="m32 27 3-3c4-4 10 2 5 6l-8 7-8-7c-5-4 1-10 5-6l3 3Z" stroke="#dcae59" stroke-width="1.7" stroke-linejoin="round"/><path d="M13 9h7m-3.5-3.5v7" stroke="#dcae59" stroke-width="1.6" stroke-linecap="round"/></svg>
@@ -384,14 +395,16 @@ fieldset{border:0;padding:0;margin:0;min-width:0}.choices{display:flex;flex-wrap
 
 <section class="section paperwash" id="story">
   <div class="wrap">
-    <div class="section-head fade-up"><div class="eyebrow">Наша история</div><h2>Как мы познакомились</h2></div>
+    <div class="section-head fade-up"><div class="eyebrow">Наша история</div><h2>Как всё началось</h2></div>
     <div class="story-shell fade-up">
       <div class="story-layout">
         <div class="story-photo"><img src="assets/couple-formal.webp" alt="Дмитрий и Анжелика вместе"></div>
         <div class="story-copy">
-          <h3>Всё началось со знакомства</h3>
-          <p>Мы встретились на стажировке: сначала были общие лекции и разговоры, а потом — всё больше поводов проводить время вместе.</p>
-          <p>Теперь мы готовимся к свадьбе и хотим разделить этот день с вами.</p>
+          <p>Мало кто знает историю нашего знакомства, поэтому мы с большой радостью хотим поделиться ею с вами.</p>
+          <p>Зимой 2025 года каждый из нас получил приглашение на стажировку от одной крупной компании. Более 300 участников должны были посещать лекции по информационной безопасности, которые проходили дважды в неделю на протяжении нескольких месяцев.</p>
+          <p>Анжелика посетила всего две лекции. И оба раза среди слушателей оказался Дмитрий.</p>
+          <p>Тогда мы ещё не знали, что эти две встречи станут началом чего-то важного. Среди сотен участников, расписаний и лекций именно так началась наша история.</p>
+          <p class="story-callout">Сегодня мы с радостью приглашаем вас стать частью её новой главы.</p>
         </div>
       </div>
     </div>
@@ -415,7 +428,7 @@ fieldset{border:0;padding:0;margin:0;min-width:0}.choices{display:flex;flex-wrap
   <div class="wrap">
     <div class="section-head fade-up"><div class="eyebrow">Пожалуйста, ответьте</div><h2>Анкета гостя</h2><p>Помогите нам подготовиться и сделать праздник комфортным для каждого.</p></div>
     <div class="rsvp-shell fade-up">
-      <div class="rsvp-deadline"><img src="assets/icon-rsvp.png" alt=""><div><strong>Будем ждать ваш ответ до 1 июня 2027 года.</strong><br>Спасибо, что поможете нам всё спланировать.</div></div>
+      <div class="rsvp-deadline"><img src="assets/icon-rsvp.png" alt=""><div><strong>Будем ждать ваши ответы!</strong><br>Если пока не получается определиться, ничего страшного — будем рады получить ваш ответ немного позже.</div></div>
       <div class="yandex-form-wrap">
         <script src="https://forms.yandex.ru/_static/embed.js"></script>
         <iframe
@@ -481,19 +494,57 @@ if('IntersectionObserver' in window){
   const heart = document.getElementById('timeline-heart');
   if(!timeline || !heart) return;
   let frame = 0;
+  let routePath = null;
+  let routeLength = 0;
+
+  function buildRoute(){
+    const oldRoute = timeline.querySelector('.timeline-route');
+    if(oldRoute) oldRoute.remove();
+    const rect = timeline.getBoundingClientRect();
+    const icons = [...timeline.querySelectorAll('.timeline-card img')];
+    const x = icons.length ? icons[0].getBoundingClientRect().left + icons[0].getBoundingClientRect().width/2 - rect.left : 24;
+    const mobile = window.matchMedia('(max-width: 760px)').matches;
+    const radius = mobile ? 18 : 20;
+    const height = timeline.scrollHeight;
+    let d = `M ${x} 0`;
+    icons.forEach(icon=>{
+      const r = icon.getBoundingClientRect();
+      const cy = r.top + r.height/2 - rect.top;
+      const top = Math.max(0, cy-radius);
+      const bottom = Math.min(height, cy+radius);
+      d += ` L ${x} ${top} A ${radius} ${radius} 0 0 1 ${x} ${bottom}`;
+    });
+    d += ` L ${x} ${height}`;
+    const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+    svg.setAttribute('class','timeline-route');
+    svg.setAttribute('viewBox',`0 0 ${Math.max(1,timeline.clientWidth)} ${Math.max(1,height)}`);
+    svg.setAttribute('preserveAspectRatio','none');
+    svg.setAttribute('aria-hidden','true');
+    const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+    path.setAttribute('d',d);
+    svg.appendChild(path);
+    timeline.insertBefore(svg,heart);
+    routePath = path;
+    routeLength = path.getTotalLength();
+  }
+
   function updateHeart(){
     frame = 0;
+    if(!routePath || !routeLength) return;
     const rect = timeline.getBoundingClientRect();
-    const maxTop = Math.max(0, timeline.offsetHeight - heart.offsetHeight);
     const guide = window.innerHeight * 0.52;
     const progress = Math.max(0, Math.min(1, (guide - rect.top) / Math.max(1, rect.height)));
-    heart.style.top = (progress * maxTop) + 'px';
+    const point = routePath.getPointAtLength(progress * routeLength);
+    heart.style.left = (point.x - heart.offsetWidth/2) + 'px';
+    heart.style.top = (point.y - heart.offsetHeight/2) + 'px';
   }
   function requestUpdate(){
     if(!frame) frame = window.requestAnimationFrame(updateHeart);
   }
+  buildRoute();
   window.addEventListener('scroll', requestUpdate, {passive:true});
-  window.addEventListener('resize', requestUpdate);
+  window.addEventListener('resize', ()=>{buildRoute();requestUpdate();});
+  window.addEventListener('load', ()=>{buildRoute();updateHeart();});
   updateHeart();
 })();
 </script>
